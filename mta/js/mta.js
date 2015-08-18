@@ -22,6 +22,10 @@ SubwayLine.prototype.getDistance = function(station1, station2){
 
 var line6 = new SubwayLine("6", ["GrandCentral", "33rd", "28th", "23rd", "UnionSquare", "AstorPlace"], ["UnionSquare"]);
 
+var lineN = new SubwayLine("N", ["TimeSquare", "34th", "28th", "23rd", "UnionSquare", "8th"], ["UnionSquare"]);
+
+var lineL = new SubwayLine("L", ["8th", "6th", "UnionSquare", "3rd", "1st"], ["UnionSquare"]);
+
 var test = line6.getDistance("33rd", "UnionSquare");
 
 console.log(test);
