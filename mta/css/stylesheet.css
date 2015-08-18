@@ -1,17 +1,22 @@
 .subway-map {
   background: url("../images/mta_map_720.png");
-  height:400px;
-  width:400px;
+  height: 600px;
+  width: 400px;
   background-size: cover;
   display: inline-block;
   border: 1px solid black;
+  vertical-align: top;
 }
 
 .output-fields {
   display: inline-block;
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
 }
 
-.input-fields {
+.interaction {
   display: inline-block;
   border: 1px solid black;
+  width: 100px;
 }
