@@ -6,17 +6,33 @@
   display: inline-block;
   border: 1px solid black;
   vertical-align: top;
+  margin-left: 800px;
 }
 
-.output-fields {
+.output {
   display: inline-block;
   height: 100px;
-  width: 100px;
+  width: 200px;
   border: 1px solid black;
+}
+
+.form-control {
+  width: 200px;
+}
+
+.stations {
+  width: 200px;
 }
 
 .interaction {
   display: inline-block;
   border: 1px solid black;
-  width: 100px;
+  width: 200px;
+  margin-left: 500px;
 }
+
+.hidden {
+  display: none;
+}
+
+

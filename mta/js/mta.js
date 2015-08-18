@@ -2,7 +2,7 @@ var SubwayLine = SubwayLine || {};
 
 SubwayLine = {
 
-  line: "line",
+  lineName: "line",
   stations: [],
   intersections: [],
 
@@ -41,20 +41,20 @@ SubwayLine = {
 
 //instanciation//
 var line6 = Object.create(SubwayLine);
-line6.line = "6";
+line6.lineName = "6";
 line6.stations = ["GrandCentral", "33rd", "28th", "23rd", "UnionSquare", "AstorPlace"];
 line6.intersections = ["UnionSquare"];
 
-
 var lineN = Object.create(SubwayLine);
-lineN.line = "N";
+lineN.lineName = "N";
 lineN.stations = ["TimeSquare", "34th", "28th", "23rd", "UnionSquare", "8th"];
 lineN.intersections = ["UnionSquare"];
 
 var lineL = Object.create(SubwayLine);
-lineL.line = "L";
+lineL.lineName = "L";
 lineL.stations = ["8th", "6th", "UnionSquare", "3rd", "1st"];
 lineL.intersections = ["UnionSquare"];
+
 // instanciation//
 
 // var line6 = new SubwayLine("6", ["GrandCentral", "33rd", "28th", "23rd", "UnionSquare", "AstorPlace"], ["UnionSquare"]);
@@ -76,3 +76,70 @@ console.log(test2);
 //     return this.getDistance(station1, intersection);
 //   }
 // }
+setup();
+
+function setup(){
+  var lineDropdowns = document.getElementsByClassName("form-control");
+  console.log(lineDropdowns);
+  for (i=0; i<lineDropdowns.length; i++) {
+    lineDropdowns[i].addEventListener("change", changeHandler);
+  }
+}
+
+function changeHandler(e) {
+  e.preventDefault();
+  console.log("in changeHandler this is "+ this);
+  findStations(this.id, this.value)
+  }
+
+
+function findStations(toOrFrom, line){
+  var id = toOrFrom === "from-line" ? "from-station" : "to-station";
+  switch (line) {
+    case "6": var stations = line6.stations;
+    break;
+    case "N": var stations = lineN.stations;
+    break;
+    case "L": var stations = lineL.stations;
+    break;
+  }
+  showStations(id, stations);
+}
+
+function showStations(id, stations){
+  var toOrFrom = id.split("-")[0];
+  var dropdown = document.getElementById(id);
+  console.log(dropdown);
+  var options = dropdown.getElementsByTagName("option");
+  console.log(options);
+  debugger;
+  for (i=0; i<options.length;i++){
+    dropdown.removeChild(options[i]);
+  }
+  // options.forEach(function(option){
+  //   dropdown.removeChild(option);
+  // });
+
+  var newOption;
+  for (i=0; i<stations.length; i++){
+    newOption = document.createElement("option");
+    newOption.setAttribute("value", stations[i]);
+    newOption.setAttribute("class", toOrFrom);
+    newOption.innerText = stations[i];
+    dropdown.appendChild(newOption);
+  }
+}
+
+
+// function findRoute(){
+//     if (this.id === "from-line") {
+//     fromLine = this.value;
+//   } 
+//   else if (this.id === "to-line") {
+//     toLine = this.value;
+//   }
+//   else {
+//     console.log("invalid id found in changeHandler.");
+// }
+
+

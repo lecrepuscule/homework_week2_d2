@@ -3,48 +3,48 @@
 <head>
   <title>mta</title>
   <link rel="stylesheet" href="css/stylesheet.css">
-  <script type="text/javascript" src="js/mta.js"></script>
 </head>
 
 <body>
   <div class="interaction">
     <div class="row1">
       <div class="lines">
-        <select class="form-control" id="from-line">
+        <select class="form-control" id="from-line" placeholder="lines">
+          <option value="" disabled selected>Select a line</option>
           <option value="6">Line 6</option>
           <option value="N">Line N</option>
           <option value="L">Line L</option>
         </select>
       </div>
       <div class="stations">
-        <select class="form-control" id="from-station">
-          <option value="6">Stations</option>
-          <option value="N">Line N</option>
-          <option value="L">Line L</option>
+        <select class="stations" id="from-station" placeholder="--select--">
+          <option value="" disabled selected>Stations</option>
         </select>
       </div>
     </div>
     <div class="row2">
       <div class="lines">
-        <select class="form-control" id="to-line">
+        <select class="form-control" id="to-line" placeholder="lines">
+          <option value="" disabled selected>Select a line</option>
           <option value="6">Line 6</option>
           <option value="N">Line N</option>
           <option value="L">Line L</option>
         </select>
       </div>
       <div class="stations">
-        <select class="form-control" id="to-station">
-          <option value="6">stations</option>
-          <option value="N">Line N</option>
-          <option value="L">Line L</option>
+        <select class="stations" id="to-station" placeholder="--select--">
+          <option value="" disabled selected>Stations</option>
         </select>
       </div>
     </div>
     <div class="row3">
-      <div class="output-fields"></div>
+      <button class="button">Get Route</div>
+    </div>
+    <div class="row4">
+      <div class="output"></div>
     </div>
   </div>
   <div class="subway-map"></div>
-
 </body>
+<script type="text/javascript" src="js/mta.js"></script>
 </html>
