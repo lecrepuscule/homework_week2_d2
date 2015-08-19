@@ -95,36 +95,26 @@ function changeHandler(e) {
 
 function findStations(toOrFrom, line){
   var id = toOrFrom === "from-line" ? "from-station" : "to-station";
+  var dropdown = document.getElementById(id);
+  for (var i=0, len = dropdown.options.length; i<len;i++){
+    dropdown.options[0] = null;
+  }
   switch (line) {
     case "6": var stations = line6.stations;
-    break;
+    break;  
     case "N": var stations = lineN.stations;
     break;
     case "L": var stations = lineL.stations;
     break;
   }
-  showStations(id, stations);
+  showStations(dropdown, stations);
 }
 
-function showStations(id, stations){
-  var toOrFrom = id.split("-")[0];
-  var dropdown = document.getElementById(id);
-  console.log(dropdown);
-  var options = dropdown.getElementsByTagName("option");
-  console.log(options);
-  debugger;
-  for (i=0; i<options.length;i++){
-    dropdown.removeChild(options[i]);
-  }
-  // options.forEach(function(option){
-  //   dropdown.removeChild(option);
-  // });
-
+function showStations(dropdown, stations){
   var newOption;
   for (i=0; i<stations.length; i++){
     newOption = document.createElement("option");
     newOption.setAttribute("value", stations[i]);
-    newOption.setAttribute("class", toOrFrom);
     newOption.innerText = stations[i];
     dropdown.appendChild(newOption);
   }
