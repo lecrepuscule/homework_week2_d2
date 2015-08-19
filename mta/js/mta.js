@@ -81,11 +81,6 @@ console.log(test2);
 setup();
 
 function setup(){
-  var lines = {
-    6: line6,
-    L: lineL,
-    N: lineN
-  };
 
   var lineDropdowns = document.getElementsByClassName("form-control");
   console.log(lineDropdowns);
@@ -130,6 +125,11 @@ function showStations(dropdown, stations){
 }
 
 function clickEventHandler(e){
+  var lines = {
+    6: line6,
+    L: lineL,
+    N: lineN
+  };
   e.preventDefault();
   var distance;
   var fromLine = document.getElementById("from-line").value; 
@@ -138,11 +138,13 @@ function clickEventHandler(e){
   var toStation = document.getElementById("to-station").value;
 
   if (fromLine === toLine){
-    return lines.fromLine.getDistance(fromStation, toStation);
+    console.log(distance);
+    return lines[fromLine].getDistance(fromStation, toStation);
   }
   else {
-    distance1 = lines.fromLine.getDistance(fromStation, "UnionSquare");
-    distance2 = lines.toLine.getDistance(toStation,"UnionSquare");
+    distance1 = lines[fromLine].getDistance(fromStation, "UnionSquare");
+    distance2 = lines[toLine].getDistance(toStation,"UnionSquare");
+    console.log(distance1+ distance2);
     return distance1 + distance2;
   }
 }
