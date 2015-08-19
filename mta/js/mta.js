@@ -65,11 +65,11 @@ lineL.intersections = ["UnionSquare"];
 
 // var lineL = new SubwayLine("L", ["8th", "6th", "UnionSquare", "3rd", "1st"], ["UnionSquare"]);
 
-var test = line6.getDistance("GrandCentral", "UnionSquare");
-var test2 = lineL.getDistance("8th", "UnionSquare");
+// var test = line6.getDistance("GrandCentral", "UnionSquare");
+// var test2 = lineL.getDistance("8th", "UnionSquare");
 
-console.log(test);
-console.log(test2);
+// console.log(test);
+// console.log(test2);
 
 //can be expanded when there are multiple intersections on each line
 
@@ -78,7 +78,9 @@ console.log(test2);
 //     return this.getDistance(station1, intersection);
 //   }
 // }
-setup();
+window.onload = function(){
+  setup();
+}
 
 function setup(){
 
@@ -132,14 +134,16 @@ function clickEventHandler(e){
   };
   e.preventDefault();
   var distance;
+  debugger;
   var fromLine = document.getElementById("from-line").value; 
-  var toLine = document.getElementById("to-station").value;
+  var toLine = document.getElementById("to-line").value;
   var fromStation = document.getElementById("from-station").value;
   var toStation = document.getElementById("to-station").value;
 
   if (fromLine === toLine){
+    distance = lines[fromLine].getDistance(fromStation, toStation);
     console.log(distance);
-    return lines[fromLine].getDistance(fromStation, toStation);
+    return distance;
   }
   else {
     distance1 = lines[fromLine].getDistance(fromStation, "UnionSquare");
