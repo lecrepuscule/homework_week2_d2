@@ -55,6 +55,8 @@ lineL.lineName = "L";
 lineL.stations = ["8th", "6th", "UnionSquare", "3rd", "1st"];
 lineL.intersections = ["UnionSquare"];
 
+ 
+
 // instanciation//
 
 // var line6 = new SubwayLine("6", ["GrandCentral", "33rd", "28th", "23rd", "UnionSquare", "AstorPlace"], ["UnionSquare"]);
@@ -79,14 +81,21 @@ console.log(test2);
 setup();
 
 function setup(){
+  var lines = {
+    6: line6,
+    L: lineL,
+    N: lineN
+  };
+
   var lineDropdowns = document.getElementsByClassName("form-control");
   console.log(lineDropdowns);
   for (i=0; i<lineDropdowns.length; i++) {
-    lineDropdowns[i].addEventListener("change", changeHandler);
+    lineDropdowns[i].addEventListener("change", changeEventHandler);
   }
+  document.getElementByIdName("button").addEventListener("click", clickEventHandler)
 }
 
-function changeHandler(e) {
+function changeEventHandler(e) {
   e.preventDefault();
   console.log("in changeHandler this is "+ this);
   findStations(this.id, this.value)
@@ -120,6 +129,23 @@ function showStations(dropdown, stations){
   }
 }
 
+function clickEventHandler(e){
+  e.preventDefault();
+  var distance;
+  var fromLine = document.getElementById("from-line").value; 
+  var toLine = document.getElementById("to-station").value;
+  var fromStation = document.getElementById("from-station").value;
+  var toStation = document.getElementById("to-station").value;
+
+  if (fromLine === toLine){
+    return lines.fromLine.getDistance(fromStation, toStation);
+  }
+  else {
+    distance1 = lines.fromLine.getDistance(fromStation, "UnionSquare");
+    distance2 = lines.toLine.getDistance(toStation,"UnionSquare");
+    return distance1 + distance2;
+  }
+}
 
 // function findRoute(){
 //     if (this.id === "from-line") {
