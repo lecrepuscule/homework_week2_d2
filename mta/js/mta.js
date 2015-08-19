@@ -92,7 +92,7 @@ function setup(){
   for (i=0; i<lineDropdowns.length; i++) {
     lineDropdowns[i].addEventListener("change", changeEventHandler);
   }
-  document.getElementByIdName("button").addEventListener("click", clickEventHandler)
+  document.getElementById("button").addEventListener("click", clickEventHandler)
 }
 
 function changeEventHandler(e) {
